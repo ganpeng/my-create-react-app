@@ -11,5 +11,6 @@ build
 
 # misc
 .DS_Store
+server/config/index.js
 .env
 npm-debug.log

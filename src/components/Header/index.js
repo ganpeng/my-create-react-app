@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link, Match } from 'react-router'
+import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 import { setUser } from '../../actions/auth'

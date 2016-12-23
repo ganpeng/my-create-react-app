@@ -3,12 +3,13 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 import { setUser } from '../../actions/auth'
-import { toggleSideBar } from '../../actions/toggle'
+import { toggleSideBar, toggleInfoPrompt } from '../../actions/toggle'
 import { removeToken } from '../../utils/storage'
 
 
 
 import SearchBar from '../SearchBar'
+import InfoPrompt from '../InfoPrompt'
 
 
 class Header extends Component {
@@ -23,9 +24,12 @@ class Header extends Component {
         this.props.toggleSideBar()
     }
 
+    onToggleInfoPrompt() {
+        this.props.toggleInfoPrompt()
+    }
 
     render() {
-        const { auth } = this.props
+        const { auth, infoPrompt } = this.props
         const guestRender = (
             <div className="auth-field">
                 <Link to="/login">登录</Link> 
@@ -35,8 +39,8 @@ class Header extends Component {
 
         const userRender = (
             <div className="auth-field">
-                <i className="fa fa-user-circle" aria-hidden="true"></i>   
-                <a href="#" className="logout-btn" onClick={this.onClick.bind(this)}>退出登录</a>
+                <i onClick={this.onToggleInfoPrompt.bind(this)} className="fa fa-user-circle" aria-hidden="true"></i>   
+                <InfoPrompt auth={auth} infoPrompt={infoPrompt} />
             </div>
         )
 
@@ -60,9 +64,10 @@ class Header extends Component {
 
 function mapStateToProps(state) {
     return {
-        auth : state.auth
+        auth : state.auth,
+        infoPrompt : state.toggle.infoPrompt
     }
 }
 
 
-export default connect(mapStateToProps, { setUser, toggleSideBar })(Header);
+export default connect(mapStateToProps, { setUser, toggleSideBar, toggleInfoPrompt })(Header);

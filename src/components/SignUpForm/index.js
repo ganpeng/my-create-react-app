@@ -157,7 +157,7 @@ class SignUpForm extends Component {
                             </p>
                         </div>
                         <div className="form-group">
-                            <button type="button" className="btn" onClick={this.onClick}>注册</button>
+                            <button type="button" className="submit-btn" onClick={this.onClick}>注册</button>
                         </div>
                     </div>
                 )

@@ -3,8 +3,11 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 import { setUser } from '../../actions/auth'
+import { toggleSideBar } from '../../actions/toggle'
 import { removeToken } from '../../utils/storage'
 
+
+import SearchBar from '../SearchBar'
 
 
 class Header extends Component {
@@ -15,6 +18,10 @@ class Header extends Component {
         this.props.setUser({})
     } 
     
+    onToggleSideBar() {
+        this.props.toggleSideBar()
+    }
+
 
     render() {
         const { auth } = this.props
@@ -27,14 +34,19 @@ class Header extends Component {
 
         const userRender = (
             <div className="auth-field">
-                <span className="user-info">{ auth.user.email }</span>
-                <a href="#" onClick={this.onClick.bind(this)}>退出登录</a>
+                <i className="fa fa-user-circle" aria-hidden="true"></i>   
+                <a href="#" className="logout-btn" onClick={this.onClick.bind(this)}>退出登录</a>
             </div>
         )
 
         return (
             <header className="page-header">
-                <h2 className="logo"></h2>
+                <div className="side-menu" onClick={this.onToggleSideBar.bind(this)}>
+                    <a className="btn btn-default" href="javascript:;">
+                        <i className="fa fa-align-justify" title="Align Justify"></i>
+                    </a>
+                </div>
+                <SearchBar />
                 { auth.isAuthentication ? userRender : guestRender }
             </header>
         );
@@ -49,4 +61,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { setUser })(Header);
+export default connect(mapStateToProps, { setUser, toggleSideBar })(Header);

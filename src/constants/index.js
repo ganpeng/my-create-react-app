@@ -1,2 +1,4 @@
 
 export const SET_USER = 'SET_USER'
+export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR'
+export const TOGGLE_INFO_PROMPT = 'TOGGLE_INFO_PROMPT'

@@ -9,8 +9,7 @@ html, body, #root {
     height:100%;
     font-family:SimHei;
     font-size:14px;
-    background:url('../public/images/bg.png') no-repeat center center;
-    background-size:cover;
+    background-color:#f1f1f1;
 }
 
 
@@ -21,3 +20,139 @@ button {
     outline:none;
     border:none;
 }
+
+button {
+    cursor:pointer;
+}
+
+
+a {
+    color:#000;
+}
+
+input::-webkit-input-placeholder, 
+textarea::-webkit-input-placeholder {
+    color: #767676;
+    font-weight:bolder;
+}
+
+input:-moz-placeholder, 
+textarea:-moz-placeholder {
+    color:#767676;
+    font-weight:bolder;
+}
+
+input::-moz-placeholder, 
+textarea::-moz-placeholder {
+    color:#767676;
+    font-weight:bolder;
+}
+
+input:-ms-input-placeholder, 
+textarea:-ms-input-placeholder {
+    color:#767676;
+    font-weight:bolder;
+}
+
+
+
+/*
+* utils
+*/
+
+.hide {
+    display:none;
+}
+
+
+
+
+
+
+/*
+* page-header
+*/
+.page-header {
+    position:relative;
+    width:100%; 
+    height:50px;
+    padding:0 28px;
+    border-top:1px solid #e8e8e8;
+    border-bottom:1px solid #e8e8e8;
+    box-sizing:border-box;
+    background-color:#fff;
+}
+
+
+.page-header .side-menu {
+    position:absolute;
+    top:50%;
+    left:28px;
+    width:38px;
+    height:30px;
+    margin-top:-15px;
+    border:1px solid #767676;
+    text-align:center;
+    line-height:30px;
+    cursor:pointer;
+}
+
+.page-header .auth-field {
+    position:absolute;
+    top:50%;
+    right:28px;
+    height:28px;
+    line-height:28px;
+    transform:translateY(-50%);
+}
+
+.page-header .auth-field .fa-user-circle {
+    font-size:28px;
+    color:#cb4437;
+    cursor:pointer;
+}
+
+
+
+.search-bar {
+    position:absolute;
+    top:50%;
+    left:230px;
+    transform:translateY(-50%);
+    overflow:hidden;
+}
+
+.search-bar .search-field {
+    float:left;
+    width:582px;
+    height:28px;
+    text-indent:6px;
+    font-size:18px;
+    color:#767676;
+    border:1px solid #cccccc;
+}
+
+.search-bar .search-btn {
+    float:left;
+    width:64px;
+    height:30px;
+    color:#9d9d9d;
+    border:1px solid #cccccc;
+    background-color:#f8f8f8;
+    border-left:none;
+}
+
+
+/*
+* side-bar
+*/
+
+.side-bar {
+    position:fixed;
+    top:50px;
+    width:222px;
+    height:800px;
+    background-color:#fff;
+    border-right:1px solid #e8e8e8;
+}
+

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 import Header from '../../components/Header'
 import SideBar from '../../components/SideBar'
+import Nav from '../../components/Nav'
+import HomeContent from '../../components/HomeContent'
 
 
 class HomePage extends Component {
@@ -9,6 +11,8 @@ class HomePage extends Component {
         return (
             <div className="home-page">
                 <Header />
+                <Nav />
+                <HomeContent />
                 <SideBar />
             </div>
         );

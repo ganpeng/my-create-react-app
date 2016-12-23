@@ -16,7 +16,7 @@ if (getToken()) {
 }
 
 render(
-    <BrowserRouter>
+    <BrowserRouter >
         <Provider store={store}>
             <App />
         </Provider>

@@ -42,9 +42,9 @@ class Header extends Component {
         return (
             <header className="page-header">
                 <div className="side-menu" onClick={this.onToggleSideBar.bind(this)}>
-                    <a className="btn btn-default" href="javascript:;">
+                    <span className="btn btn-default" href="">
                         <i className="fa fa-align-justify" title="Align Justify"></i>
-                    </a>
+                    </span>
                 </div>
                 <SearchBar />
                 { auth.isAuthentication ? userRender : guestRender }

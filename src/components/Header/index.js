@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router'
+import { Link, Match } from 'react-router'
 import { connect } from 'react-redux'
 
 import { setUser } from '../../actions/auth'
 import { toggleSideBar } from '../../actions/toggle'
 import { removeToken } from '../../utils/storage'
+
 
 
 import SearchBar from '../SearchBar'
@@ -40,15 +41,18 @@ class Header extends Component {
         )
 
         return (
-            <header className="page-header">
-                <div className="side-menu" onClick={this.onToggleSideBar.bind(this)}>
-                    <span className="btn btn-default" href="">
-                        <i className="fa fa-align-justify" title="Align Justify"></i>
-                    </span>
-                </div>
-                <SearchBar />
-                { auth.isAuthentication ? userRender : guestRender }
-            </header>
+            <div>
+                <header className="page-header">
+                    <div className="side-menu" onClick={this.onToggleSideBar.bind(this)}>
+                        <span className="btn btn-default" href="">
+                            <i className="fa fa-align-justify" title="Align Justify"></i>
+                        </span>
+                    </div>
+                    <SearchBar />
+                    { auth.isAuthentication ? userRender : guestRender }
+                </header>
+
+            </div>
         );
     }
 }

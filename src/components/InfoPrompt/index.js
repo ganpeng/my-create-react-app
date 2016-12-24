@@ -18,6 +18,9 @@ class InfoPrompt extends Component {
                         {user.username}
                     </span>
                 </div>
+                <div className="logout-field">
+                    <button className="logout-btn">退出账号</button>
+                </div>
             </div>
         );
     }

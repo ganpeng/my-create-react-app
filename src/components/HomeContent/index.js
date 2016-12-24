@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import { Link, Match } from 'react-router'
 
+import LoginPage from '../../containers/LoginPage'
+import SignUpPage from '../../containers/SignUpPage'
+
+
 const Home = () => (
   <div>
     <h2>Home</h2>
@@ -45,6 +49,8 @@ class HomeContent extends Component {
                     <Match exactly pattern="/" component={Home} />
                     <Match pattern="/movie" component={About} />
                     <Match pattern="/music" component={Topics} />
+                    <Match pattern="/login" component={LoginPage} />
+                    <Match pattern="/signup" component={SignUpPage} />
             </div>
         );
     }

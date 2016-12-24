@@ -16,7 +16,7 @@ class SideBar extends Component {
                         </Link>
                     </li>
                     <li className="side-item">
-                        <Link to="/movie">
+                        <Link to="/mymovie">
                             <i className="fa fa-film" aria-hidden="true"></i>我的电影
                         </Link>
                     </li>

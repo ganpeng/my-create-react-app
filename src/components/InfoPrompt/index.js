@@ -39,6 +39,7 @@ class InfoPrompt extends Component {
                 <div className="auth-info">
                     <button type="button" className="logout-btn" onClick={this.logout.bind(this)}>退出账号</button>
                 </div>
+                <i className="fa fa-caret-up" aria-hidden="true"></i>
             </div>
         )
 

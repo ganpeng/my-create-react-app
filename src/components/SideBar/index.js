@@ -11,17 +11,17 @@ class SideBar extends Component {
         const authRender = (
                 <ul className="side-list">
                     <li className="side-item">
-                        <Link to="/">
+                        <Link to="/" activeOnlyWhenExact activeClassName="active">
                             <i className="fa fa-home" aria-hidden="true"></i>首页
                         </Link>
                     </li>
                     <li className="side-item">
-                        <Link to="/mymovie">
+                        <Link to="/mymovie" activeClassName="active">
                             <i className="fa fa-film" aria-hidden="true"></i>我的电影
                         </Link>
                     </li>
                     <li className="side-item">
-                        <Link to="/music">
+                        <Link to="/music" activeClassName="active">
                             <i className="fa fa-music" aria-hidden="true"></i>我的音乐
                         </Link>
                     </li>

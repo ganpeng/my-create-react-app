@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router'
 
 import img from '../../../public/images/movieImage.png'
 
@@ -7,9 +8,11 @@ class MyMovieList extends Component {
     render() {
         return (
             <div className="my-movie">
-                <button type="button" className="my-movie-add-btn">
-                    <i className="fa fa-plus" aria-hidden="true"></i>&nbsp;添加电影
-                </button>
+                <Link to="/mymovie/add">
+                    <button type="button" className="my-movie-add-btn">
+                        <i className="fa fa-plus" aria-hidden="true"></i>&nbsp;添加电影
+                    </button>
+                </Link>
                 <ul className="my-movie-list">
                     <li className="my-movie-item">
                         <img className="my-movie-image" src={img} alt=""/>

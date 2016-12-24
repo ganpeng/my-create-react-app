@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 import { setUser } from '../../actions/auth'
@@ -30,19 +29,6 @@ class Header extends Component {
 
     render() {
         const { auth, infoPrompt } = this.props
-        const guestRender = (
-            <div className="auth-field">
-                <Link to="/login">登录</Link> 
-                <Link to="/signup">注册</Link> 
-            </div>
-        )
-
-        const userRender = (
-            <div className="auth-field">
-                <i onClick={this.onToggleInfoPrompt.bind(this)} className="fa fa-user-circle" aria-hidden="true"></i>   
-                <InfoPrompt auth={auth} infoPrompt={infoPrompt} />
-            </div>
-        )
 
         return (
             <div>
@@ -53,7 +39,10 @@ class Header extends Component {
                         </span>
                     </div>
                     <SearchBar />
-                    { auth.isAuthentication ? userRender : guestRender }
+                    <div className="auth-field">
+                        <i onClick={this.onToggleInfoPrompt.bind(this)} className="fa fa-user-circle" aria-hidden="true"></i>   
+                        <InfoPrompt auth={auth} infoPrompt={infoPrompt} />
+                    </div>
                 </header>
 
             </div>

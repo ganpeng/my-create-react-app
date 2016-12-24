@@ -6,19 +6,20 @@ import SignUpPage from '../../containers/SignUpPage'
 
 
 const Home = () => (
-  <div>
+  <div className="home-content">
     <h2>Home</h2>
   </div>
 )
 
 const About = () => (
-  <div>
+  <div className="home-content">
     <h2>About</h2>
   </div>
 )
 
 const Topic = ({ params }) => (
-  <div>
+  <div className="home-content">
+    <h2>About</h2>
     <h3>{params.topicId}</h3>
   </div>
 )
@@ -45,13 +46,13 @@ const Topics = ({ pathname }) => (
 class HomeContent extends Component {
     render() {
         return (
-            <div className="home-content">
-                    <Match exactly pattern="/" component={Home} />
-                    <Match pattern="/movie" component={About} />
-                    <Match pattern="/music" component={Topics} />
-                    <Match pattern="/login" component={LoginPage} />
-                    <Match pattern="/signup" component={SignUpPage} />
-            </div>
+          <div>
+              <Match exactly pattern="/" component={Home} />
+              <Match pattern="/movie" component={About} />
+              <Match pattern="/music" component={Topics} />
+              <Match pattern="/login" component={LoginPage} />
+              <Match pattern="/signup" component={SignUpPage} />
+          </div>
         );
     }
 }

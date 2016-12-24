@@ -103,7 +103,7 @@ class LoginForm extends Component {
         return (
             <div>
                 {
-                    auth.isAuthentication ?  <Redirect to="/home" /> : (
+                    auth.isAuthentication ?  <Redirect to="/" /> : (
                         
                         <div className="login-form">
                             <h2 className="form-title">登录</h2>

@@ -1,13 +1,31 @@
 import React, {Component} from 'react';
 import classnames from 'classnames'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
+
+import { removeToken } from '../../utils/storage'
+import { setUser } from '../../actions/auth'
+
 
 class InfoPrompt extends Component {
+
+    logout() {
+        removeToken()
+        this.props.setUser({})
+    }
+
     render() {
-
         const { infoPrompt, auth } = this.props
-        const { user } = auth
+        const { isAuthentication, user } = auth
 
-        return (
+        const guestRender = (
+            <div className={classnames("info-prompt", {"hide" : !infoPrompt})}>
+                <div className="auth-info">
+                    <Link to="/login" className="login-btn">登录账号</Link>
+                </div>
+            </div>
+        )
+        const authRender = (
             <div className={classnames("info-prompt", {"hide" : !infoPrompt})}>
                 <h2 className="email">{ user.email }</h2>
                 <div className="icon-name">
@@ -18,9 +36,15 @@ class InfoPrompt extends Component {
                         {user.username}
                     </span>
                 </div>
-                <div className="logout-field">
-                    <button className="logout-btn">退出账号</button>
+                <div className="auth-info">
+                    <button type="button" className="logout-btn" onClick={this.logout.bind(this)}>退出账号</button>
                 </div>
+            </div>
+        )
+
+        return (
+            <div>
+                { isAuthentication ? authRender : guestRender }
             </div>
         );
     }
@@ -29,4 +53,4 @@ class InfoPrompt extends Component {
 
 
 
-export default InfoPrompt;
+export default connect(null, { setUser })(InfoPrompt);

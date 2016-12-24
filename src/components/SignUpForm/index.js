@@ -101,7 +101,7 @@ class SignUpForm extends Component {
         return (
             <div>
             { 
-                auth.isAuthentication ? <Redirect to="/home" /> :  (
+                auth.isAuthentication ? <Redirect to="/" /> :  (
                     
                     <div className="signup-form">
                         <h2 className="form-title">注册</h2> 

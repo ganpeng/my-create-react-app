@@ -330,8 +330,85 @@ textarea:-ms-input-placeholder {
     top:90px;
     // width:1260px;
     width:66%;
+    padding:20px;
     min-height:800px;
     background-color:#fff;
     margin-top:10px;
     transform:translateX(-50%);
+    box-sizing:border-box;
+}
+
+/*
+*  my-movie-list
+*/
+
+.my-movie .my-movie-add-btn {
+    height:26px;
+    line-height:26px;
+    padding:0 10px;
+    margin-bottom:10px;
+    background-color:#f8f8f8;
+    border:1px solid #d3d3d3;
+    box-sizing:border-box
+}
+
+.my-movie-list {
+    width:100%;
+}
+
+.my-movie-list .my-movie-item {
+    width:100%;
+    height:110px;
+    overflow:hidden;
+}
+
+.my-movie-item .my-movie-image {
+    float:left;
+    width:198px;
+    height:110px;
+}
+
+.my-movie-item .my-movie-info {
+    float:left;
+    width:60%;
+    color:#a3a4a2;
+    margin-left:10px;
+    height:110px;
+}
+.my-movie-item .my-movie-create-time {
+    line-height:22px;
+    margin-right:10px;
+}
+.my-movie-item .my-movie-view-count {
+    line-height:22px;
+}
+.my-movie-item .my-movie-operator {
+    overflow:hidden;
+}
+.my-movie-item .my-movie-desc {
+    color:#000;
+    line-height:20px;
+    margin-top:5px;
+}
+
+.my-movie-info .my-movie-title {
+    font-size:16px;
+    line-height:28px;
+    color:#317ec3;
+}
+
+.my-movie-operator .edite-btn,
+.my-movie-operator .delete-btn {
+    height:26px;
+    line-height:26px;
+    margin-top:32px;
+    margin-right:10px;
+    padding:0 10px;
+    background-color:#f8f8f8;
+    border:1px solid #d3d3d3;
+    box-sizing:border-box
+}
+
+.my-movie-operator .delete-btn {
+    color:#bb3733;
 }

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
+import moment from 'moment'
+
 
 import { getUserMovies } from '../../actions/movie' 
 
@@ -40,7 +42,7 @@ class MyMovieList extends Component {
                         <img className="my-movie-image" src={img} alt=""/>
                         <div className="my-movie-info">
                             <h2 className="my-movie-title">{movie.title}</h2>
-                            <span className="my-movie-create-time">{movie.createdAt}</span>
+                            <span className="my-movie-create-time">{moment(movie.createdAt).startOf('hour').fromNow()}</span>
                             <span className="my-movie-view-count">7,104,022次观看</span>
                             <p className="my-movie-desc">
                                 {movie.summary}

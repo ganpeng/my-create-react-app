@@ -11,3 +11,13 @@ export function createMovie(userId, movieData) {
         })
     }
 }
+
+
+export function getUserMovies(userId) {
+    return dispatch => {
+        return fetch(`/api/movie/${userId}`, {
+            method : 'GET',
+            headers : setHeader()
+        })
+    }
+}

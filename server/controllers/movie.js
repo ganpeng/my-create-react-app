@@ -1,4 +1,5 @@
 import co from 'co'
+import * as _ from 'lodash'
 
 import db from '../models/'
 
@@ -7,7 +8,9 @@ export function addMovie(req, res) {
     co(function* () {
         const UserId = req.params.userId
 
-        const movie = yield db.Movie.create( Object.assign({}, req.body, { UserId : UserId} ) )
+        const field = [ 'title', 'original_title', 'aka', 'ratings_count', 'wish_count', 'collect_count', 'subtype', 'directors', 'casts', 'writers', 'website', 'pubdate', 'year', 'language', 'genres', 'summary' ]
+
+        const movie = yield db.Movie.create( Object.assign({}, _.pick(req.body, field), { UserId : UserId} ) )
         if (movie) {
             return res.json({
                 success : true,

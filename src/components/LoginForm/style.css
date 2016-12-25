@@ -35,7 +35,8 @@
     display:block;
     padding:0 20px;
     height:42px;
-    color:#132e34;
+    /*color:#132e34;*/
+    color:#fff;
     font-size:16px;
     background-color:#46cfed;
     border:1px solid #009bc9;

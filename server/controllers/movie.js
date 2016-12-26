@@ -33,7 +33,7 @@ export function addMovie(req, res) {
 export function getMoviesByUserId(req, res) {
     co(function* () {
         const UserId = req.params.userId
-        const movies = yield db.Movie.findAll({ where : { UserId } })
+        const movies = yield db.Movie.findAll({ where : { UserId }, order: '"createdAt" DESC' })  // 两种排序方式  DESC  和  ASC   ,注意此处写法，双引号不能丢掉
 
 
         if (movies) {

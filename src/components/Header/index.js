@@ -23,7 +23,7 @@ class Header extends Component {
         this.props.toggleSideBar()
     }
 
-    onToggleInfoPrompt() {
+    onToggleInfoPrompt(e) {
         this.props.toggleInfoPrompt()
     }
 

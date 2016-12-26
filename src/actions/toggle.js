@@ -16,5 +16,3 @@ export function toggleInfoPrompt() {
         type : TOGGLE_INFO_PROMPT
     }
 }
-
-

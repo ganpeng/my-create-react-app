@@ -30,7 +30,7 @@ export function addMovie(req, res) {
 }
 
 
-export function getMovie(req, res) {
+export function getMoviesByUserId(req, res) {
     co(function* () {
         const UserId = req.params.userId
         const movies = yield db.Movie.findAll({ where : { UserId } })
@@ -51,6 +51,38 @@ export function getMovie(req, res) {
     .catch((err) => {
         console.log(err)
     })
+}
+
+
+export function getMovieByMovieId(req, res) { 
+    co(function* () {
+
+        const { movieId } = req.params
+
+        const movie = yield db.Movie.find({
+            where : {
+                id : movieId
+            }
+        })
+
+        if (movie) {
+            return res.json({
+                success : true,
+                movie
+            }) 
+
+        } else {
+            return res.json({
+                success : false,
+                error : '电影不存在'
+            })
+        }
+
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+    
 }
 
 
@@ -76,8 +108,41 @@ export function getMovies(req, res) {
 
 
 
+function updateMovie(req, res) {
+    co(function* () {
+        const movieId = req.params.movieId
+
+        const field = [ 'title', 'original_title', 'aka', 'ratings_count', 'wish_count', 'collect_count', 'subtype', 'directors', 'casts', 'writers', 'website', 'pubdate', 'year', 'language', 'genres', 'summary' ]
+
+        const movie = yield db.Movie.find({
+            where : {
+                id : movieId
+            }
+        })     
+
+        if (movie) {
+            yield movie.update(Object.assign({}, _.pick(req.body, field)))
+            return res.json({
+                success : true,
+                movie
+            })
+        } else {
+            return res.json({
+                success : false,
+                error : '电影未找到'
+            })
+        }
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
+
 export default {
     addMovie,
     getMovies,
-    getMovie
+    getMoviesByUserId,
+    getMovieByMovieId,
+    updateMovie
 }

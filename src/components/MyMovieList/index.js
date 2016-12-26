@@ -5,6 +5,7 @@ import moment from 'moment'
 
 
 import { getUserMovies } from '../../actions/movie' 
+import { cutStr } from '../../utils/'
 
 import img from '../../../public/images/movieImage.png'
 
@@ -45,13 +46,15 @@ class MyMovieList extends Component {
                             <span className="my-movie-create-time">{moment(movie.createdAt).startOf('hour').fromNow()}</span>
                             <span className="my-movie-view-count">7,104,022次观看</span>
                             <p className="my-movie-desc">
-                                {movie.summary}
+                                {cutStr(movie.summary, 60)}
                             </p>
                         </div>
                         <div className="my-movie-operator">
-                            <button type="button" className="edite-btn">
-                                <i className="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;编辑
-                            </button>         
+                            <Link to={`/mymovie/edite/${movie.id}`}>
+                                <button type="button" className="edite-btn">
+                                    <i className="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;编辑
+                                </button>         
+                            </Link>
                             <button type="button" className="delete-btn">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>&nbsp;删除
                             </button>         

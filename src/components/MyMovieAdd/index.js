@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
+import moment from 'moment'
 
 import TextInput from '../TextInput'
 import { createMovieValidator } from '../../utils/validator'
@@ -30,9 +31,47 @@ class MyMovieAdd extends Component {
         }
 
         this.onChange = this.onChange.bind(this)
-        this.onClick = this.onClick.bind(this)
+        this.onCreateClick = this.onCreateClick.bind(this)
+        this.onUpdateClick = this.onUpdateClick.bind(this)
 
     }
+
+    componentDidMount() {
+
+        if (this.props.edite) {
+            const movieId = this.props.movieId
+            this.props.getMovie(movieId)
+                .then((res) => res.json())
+                .then((result) => {
+                    if (result.success) {
+                        let movie = result.movie 
+
+                        this.setState({
+                            title : movie.title,
+                            original_title : movie.original_title,
+                            aka : movie.aka,
+                            subtype : movie.subtype,
+                            directors : movie.directors,
+                            casts : movie.casts,
+                            writers : movie.writers,
+                            website : movie.website,
+                            pubdate : movie.pubdate ? moment(movie.pubdate).format('YYYY-MM-DD') : undefined,
+                            year : movie.year,
+                            language : movie.language,
+                            genres : movie.genres,
+                            summary : movie.summary,                            
+                        })
+
+                    } else {
+                        console.log(result.error)
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        } 
+    }
+
 
     isValid() {
         const { errors, isValid } = createMovieValidator(this.state)
@@ -46,8 +85,41 @@ class MyMovieAdd extends Component {
         return isValid
     }
 
+    onUpdateClick() {
 
-    onClick() {
+        const movieId = this.props.movieId
+
+        if (this.isValid()) {
+            this.setState({
+                errors : {},
+                isLoading : true
+            })
+            this.props.updateMovie(movieId, this.state)
+                .then((res) => res.json())
+                .then((result) => {
+                    if (result.success) {
+                        this.setState({
+                            isLoading : false,
+                            isLoaded : true
+                        })
+                    } else {
+                        console.log(result.error)
+                        this.setState({
+                            isLoading : false
+                        })
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                    this.setState({
+                        isLoading : false
+                    })
+                })      
+        }
+    }
+
+
+    onCreateClick() {
 
         const { auth } = this.props
         const userId = auth.user.id 
@@ -216,9 +288,17 @@ class MyMovieAdd extends Component {
                         placeholder="请输入电影简介"
                         onChange={this.onChange}
                     />
-                    <div className="form-group">
-                        <button type="button" className="submit-btn" onClick={this.onClick}>登录</button>
-                    </div>
+                    {
+                        this.props.edite ? 
+                            <div className="form-group">
+                                <button type="button" className="submit-btn" onClick={this.onUpdateClick}>更新</button>
+                            </div>
+                        :
+                            <div className="form-group">
+                                <button type="button" className="submit-btn" onClick={this.onCreateClick}>创建</button>
+                            </div>
+                        
+                    }
                 </div>)
             }
 

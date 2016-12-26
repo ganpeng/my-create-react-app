@@ -8,8 +8,10 @@ const router = express.Router()
 
 router.get('/', movie.getMovies)
 
-router.get('/:userId', movie.getMovie)
-router.post('/:userId', movie.addMovie)
+router.get('/byuserid/:userId', movie.getMoviesByUserId)
+router.get('/bymovieid/:movieId', movie.getMovieByMovieId)
+router.post('/createmoviebyuserid/:userId', movie.addMovie)
+router.post('/update/:movieId', movie.updateMovie)
 
 
 export default router

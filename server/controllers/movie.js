@@ -139,10 +139,40 @@ function updateMovie(req, res) {
 }
 
 
+function deleteMovie(req, res) {
+    co(function* () {
+        const { movieId } = req.params
+
+        const movie = yield db.Movie.findOne({
+            where : {
+                id : movieId
+            } 
+        })
+
+        if (movie) {
+            yield movie.destroy()
+            res.json({
+                success : true
+            })
+        } else {
+            res.json({
+                success : false,
+                error : '删除失败'
+            })
+        }
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
+
+
 export default {
     addMovie,
     getMovies,
     getMoviesByUserId,
     getMovieByMovieId,
-    updateMovie
+    updateMovie,
+    deleteMovie
 }

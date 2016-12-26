@@ -47,3 +47,12 @@ export function updateMovie(movieId, movieData) {
         })
     }
 }
+
+export function deleteMovie(movieId) {
+    return dispatch => {
+        return fetch(`/api/movie/delete/${movieId}`, {
+            method : 'DELETE',
+            headers : setHeader()
+        })
+    }
+}

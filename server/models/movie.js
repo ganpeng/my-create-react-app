@@ -1,7 +1,7 @@
 'use strict'
 
 export default (sequelize, DataTypes) => {
-    
+
     const Movie = sequelize.define('Movie', {
         // 电影ID
         id : {
@@ -34,7 +34,7 @@ export default (sequelize, DataTypes) => {
         //     }
         // },
 
-        // 评分人数 
+        // 评分人数
         ratings_count : {
             type : DataTypes.INTEGER,
             defaultValue : 0,

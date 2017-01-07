@@ -8,10 +8,10 @@ export function getMovieComments(req, res) {
 
         const MovieId = req.params.movieId
 
-        const comments = yield db.Comment.findAll({ 
-            where : { MovieId }, 
+        const comments = yield db.Comment.findAll({
+            where : { MovieId },
             include : [{ model : db.Movie, include : [{ model : db.User }] }, { model : db.Comment }]
-        }) 
+        })
 
         return res.json({
             success : true,
@@ -26,7 +26,7 @@ export function getMovieComments(req, res) {
 
 export function addMovieComment(req, res) {
     co(function* () {
-       const MovieId = req.params.movieId 
+       const MovieId = req.params.movieId
        const UserId = req.params.userId
 
        const comment = yield db.Comment.create(Object.assign({}, req.body, { MovieId : MovieId, UserId : UserId }))

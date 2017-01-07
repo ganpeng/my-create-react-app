@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
             where : {
                 $or : {
                     username : identify,
-                    email : identify 
+                    email : identify
                 }
             }
         })

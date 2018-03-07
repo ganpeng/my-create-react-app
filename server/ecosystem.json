@@ -1,0 +1,12 @@
+{
+    "apps": [
+        {
+            "name": "my-app",
+            "script": "app.js",
+            "args": ["--toto=heya coco", "-d", "1"],
+            "whatch": true,
+            "node_args": "--harmony",
+            "exec_interpreter" : "babel-node"
+        }
+    ]
+}
